@@ -1,0 +1,24 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost/leonimeeting?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: "classpath:db/changelog/changelog.mysql.sql"
+    enabled: true
+  mail:
+    host: smtp.mailtrap.io
+    port: 2525
+    username: 1f676f3ed29289
+    password: 56de0956dd1b39
+logging:
+  file:
+    path: ./

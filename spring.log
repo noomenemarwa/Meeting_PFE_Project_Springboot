@@ -1,0 +1,66 @@
+2020-06-18 21:27:35.311  INFO 5080 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 5080 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
+2020-06-18 21:27:35.376  INFO 5080 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
+2020-06-18 21:27:37.513  INFO 5080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-06-18 21:27:37.759  INFO 5080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 218ms. Found 4 JPA repository interfaces.
+2020-06-18 21:27:40.539  INFO 5080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2020-06-18 21:27:40.609  INFO 5080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-18 21:27:40.609  INFO 5080 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-06-18 21:27:40.925  INFO 5080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-18 21:27:40.926  INFO 5080 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5106 ms
+2020-06-18 21:27:41.493  INFO 5080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-18 21:27:44.517  INFO 5080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-18 21:27:47.051  INFO 5080 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-06-18 21:27:47.316  INFO 5080 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-06-18 21:27:47.337  INFO 5080 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
+2020-06-18 21:27:47.789  INFO 5080 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
+2020-06-18 21:27:48.529  INFO 5080 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
+2020-06-18 21:27:48.531  INFO 5080 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
+2020-06-18 21:27:48.535  INFO 5080 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
+2020-06-18 21:27:48.537  INFO 5080 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+2020-06-18 21:27:48.680  INFO 5080 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
+2020-06-18 21:27:49.117  INFO 5080 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-18 21:27:49.381  INFO 5080 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-06-18 21:27:49.889  INFO 5080 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-18 21:27:50.310  INFO 5080 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-18 21:27:52.349  INFO 5080 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-18 21:27:52.364  INFO 5080 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 21:27:54.339  WARN 5080 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-18 21:27:55.142  INFO 5080 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@18c1faa, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e55e48, org.springframework.security.web.header.HeaderWriterFilter@1c77962, org.springframework.security.web.authentication.logout.LogoutFilter@18b0c12, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@130d0eb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@101361e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@164d801, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1a5b46f, org.springframework.security.web.session.SessionManagementFilter@10c01ab, org.springframework.security.web.access.ExceptionTranslationFilter@505460, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@15033c5]
+2020-06-18 21:27:55.839  INFO 5080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2020-06-18 21:27:55.843  INFO 5080 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 22.753 seconds (JVM running for 24.461)
+2020-06-18 21:36:20.437  INFO 5080 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-18 21:36:20.438  INFO 5080 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-18 21:36:20.461  INFO 5080 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+2020-06-18 22:55:01.436  INFO 11784 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 11784 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
+2020-06-18 22:55:01.441  INFO 11784 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
+2020-06-18 22:55:03.127  INFO 11784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-06-18 22:55:03.341  INFO 11784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 194ms. Found 4 JPA repository interfaces.
+2020-06-18 22:55:05.982  INFO 11784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2020-06-18 22:55:06.016  INFO 11784 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-18 22:55:06.017  INFO 11784 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-06-18 22:55:06.403  INFO 11784 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-18 22:55:06.404  INFO 11784 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4814 ms
+2020-06-18 22:55:06.871  INFO 11784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-18 22:55:09.321  INFO 11784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-18 22:55:11.794  INFO 11784 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-06-18 22:55:11.891  INFO 11784 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-06-18 22:55:11.922  INFO 11784 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
+2020-06-18 22:55:12.120  INFO 11784 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
+2020-06-18 22:55:12.770  INFO 11784 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
+2020-06-18 22:55:12.772  INFO 11784 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
+2020-06-18 22:55:12.775  INFO 11784 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
+2020-06-18 22:55:12.776  INFO 11784 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+2020-06-18 22:55:12.946  INFO 11784 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
+2020-06-18 22:55:13.351  INFO 11784 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-18 22:55:13.637  INFO 11784 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-06-18 22:55:14.264  INFO 11784 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-18 22:55:14.610  INFO 11784 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-06-18 22:55:16.403  INFO 11784 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-18 22:55:16.418  INFO 11784 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-18 22:55:18.356  WARN 11784 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-18 22:55:19.119  INFO 11784 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11e18b1, org.springframework.security.web.context.SecurityContextPersistenceFilter@1de913e, org.springframework.security.web.header.HeaderWriterFilter@35d743, org.springframework.security.web.authentication.logout.LogoutFilter@1d3e1e3, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@9eab53, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2bc241, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@101361e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7de450, org.springframework.security.web.session.SessionManagementFilter@bae609, org.springframework.security.web.access.ExceptionTranslationFilter@9bed65, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@19999f6]
+2020-06-18 22:55:19.940  INFO 11784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2020-06-18 22:55:19.945  INFO 11784 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 20.753 seconds (JVM running for 22.147)
+2020-06-18 22:59:16.886  INFO 11784 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-18 22:59:16.887  INFO 11784 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-18 22:59:16.911  INFO 11784 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
