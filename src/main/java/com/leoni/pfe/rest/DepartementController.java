@@ -11,9 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/dep")
-@CrossOrigin(origins = {"http://localhost:4200"},
+/*@CrossOrigin(origins = {"http://localhost:4200"},
         allowedHeaders = "*",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})*/
 public class DepartementController {
 
 

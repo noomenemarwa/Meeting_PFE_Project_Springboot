@@ -19,12 +19,15 @@ public class ReunionService {
 
     private final ReunionRepository reunionRepository;
     private final MembreDeReunionRepository membreDeReunionRepository;
+    private final EmailService emailService;
 
     @Autowired
     public ReunionService(ReunionRepository reunionRepository,
-                          MembreDeReunionRepository membreDeReunionRepository) {
+                          MembreDeReunionRepository membreDeReunionRepository,
+                          EmailService emailService) {
         this.reunionRepository = reunionRepository;
         this.membreDeReunionRepository = membreDeReunionRepository;
+        this.emailService = emailService;
     }
 
 
@@ -74,6 +77,12 @@ public class ReunionService {
         reunion.setDate_deb(date_deb);
         reunion.setDate_fin(date_fin);
         return reunionRepository.save(reunion);
+        /*if (reun.getId() > 0) {
+            Feedback feedback = new Feedback("test nom", "")
+
+
+            emailService.sendEmail()
+        }*/
     }
 
 

@@ -19,6 +19,19 @@ public class Feedback {
     @Size(min = 10) //taille minimal de feedback 10
     private String feedback;
 
+    // *****************************
+
+    public Feedback() {
+    }
+
+    public Feedback(@NotNull String nom, @NotNull @Email String email, @NotNull @Size(min = 10) String feedback) {
+        this.nom = nom;
+        this.email = email;
+        this.feedback = feedback;
+    }
+
+    // *****************************
+
     public String getNom() {
         return nom;
     }

@@ -11,7 +11,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/Reunion")
-@CrossOrigin(origins = {"http://localhost:4200"})
+/*@CrossOrigin(origins = {"http://localhost:4200"},
+        allowedHeaders = "*",
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})*/
 public class ReunionController {
 
     private final ReunionService reunionService;

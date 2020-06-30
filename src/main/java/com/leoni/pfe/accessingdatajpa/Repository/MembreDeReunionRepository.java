@@ -11,6 +11,8 @@ public interface MembreDeReunionRepository extends JpaRepository<MembreDeReunion
     //  find by IdMembre
     List<MembreDeReunion> findByIdMembre(long idMembre);
 
+    List<MembreDeReunion> findByIdReunion(long idReunion);
+
     // update is_present=true
     @Query("update MembreDeReunion mr set mr.isPresent=1 where mr.idReunion=?1 and mr.idMembre=?2")
     @Modifying

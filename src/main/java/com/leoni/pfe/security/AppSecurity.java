@@ -9,10 +9,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity
 //@EnableGlobalMethodSecurity
 public class AppSecurity extends WebSecurityConfigurerAdapter {
+
+
+
+
 
     // Security: BasicAuth, JWT, oauth2.0, LDAP, ...
 
@@ -26,6 +31,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
         // super.configure(auth);
         // auth.authenticationProvider(customAuthenticationProvider);
         auth.inMemoryAuthentication()
@@ -36,6 +42,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
                 .withUser("Marwa")
                 .password(passwordEncoder().encode("USER"))
                 .roles("USER");
+
     }
 
     /**
@@ -46,12 +53,14 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
          // super.configure(http);
-
+        // The cors() method will add the Spring-provided CorsFilter to the application context which in turn bypasses the authorization checks for OPTIONS requests.
+        // http.cors();
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/personne/login").permitAll()
                 .antMatchers("*/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
+                .and().cors().
                 .and()
                 .httpBasic();
 
