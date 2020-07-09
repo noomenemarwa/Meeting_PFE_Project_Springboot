@@ -24,6 +24,9 @@ public class DepartmentService {
         return departementRepository.findAll();
     }
 
+    List<Departement> findAllDepByIds(List<Long> idDeps) {
+        return departementRepository.findByIdIn(idDeps);
+    }
 
     //supprimer un departement
     @Transactional //s'execute dans une transaction

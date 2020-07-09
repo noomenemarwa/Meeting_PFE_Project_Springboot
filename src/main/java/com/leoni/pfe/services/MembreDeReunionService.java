@@ -16,10 +16,12 @@ import java.util.List;
 public class MembreDeReunionService {
 
     private final MembreDeReunionRepository membreDeReunionRepository;
+    private final ReunionService reunionService;
 
     @Autowired //injection de dependance
-    public MembreDeReunionService(MembreDeReunionRepository membreDeReunionRepository) {
+    public MembreDeReunionService(MembreDeReunionRepository membreDeReunionRepository, ReunionService reunionService) {
         this.membreDeReunionRepository = membreDeReunionRepository;
+        this.reunionService = reunionService;
     }
 
     //afficher la liste des membres
@@ -74,5 +76,9 @@ public class MembreDeReunionService {
         }
 
         return statsParReunion;
+    }
+
+    public List<MembreDeReunion> findAllForReunionList(List<Long> ids) {
+        return membreDeReunionRepository.findByIdReunionIn(ids);
     }
 }

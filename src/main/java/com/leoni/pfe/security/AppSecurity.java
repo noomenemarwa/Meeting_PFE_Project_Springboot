@@ -60,7 +60,7 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/personne/login").permitAll()
                 .antMatchers("*/*").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
-                .and().cors().
+                .and().cors()
                 .and()
                 .httpBasic();
 

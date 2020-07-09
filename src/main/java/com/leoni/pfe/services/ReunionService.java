@@ -30,6 +30,7 @@ public class ReunionService {
         this.emailService = emailService;
     }
 
+    // id reunion, id dep,
 
     // afficher la liste des reunions
     public List<Reunion> findAllReunion() {
@@ -83,6 +84,25 @@ public class ReunionService {
 
             emailService.sendEmail()
         }*/
+    }
+
+    /**
+     *
+     * Retourne la liste des IDS des reunions entre 2 dates donnees.
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    public List<Long> findReunionBetweenStartAndEndDate(String startDate, String endDate) {
+        List<Long> listIds = new ArrayList<>(0);
+        List<Reunion> list = reunionRepository.reunionBetweenStartAndEndDate(startDate, endDate);
+        if (list != null && !list.isEmpty()) {
+            for (Reunion r : list) {
+                // System.out.println("reunion: " + r.toString());
+                listIds.add(r.getId());
+            }
+        }
+        return listIds;
     }
 
 

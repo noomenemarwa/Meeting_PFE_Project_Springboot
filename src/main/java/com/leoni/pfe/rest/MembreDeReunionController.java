@@ -33,6 +33,7 @@ public class MembreDeReunionController {
         return membreDeReunionService.findAllMembreDeReunion();
     }
 
+
     // find by IdMembre
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PostMapping(path = "/findByIdMembre", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})

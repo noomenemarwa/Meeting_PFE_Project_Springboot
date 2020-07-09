@@ -11,6 +11,8 @@ public interface PersonneRepository extends JpaRepository<Personne,Long> {
     //afficher les personnes par password et email
     List<Personne> findByEmailAndPassword(String email, String password);
 
+    List<Personne> findByIdIn(List<Long> listIds);
+
     //modifier une personne
     @Query(value = "update Personne P set P.fonction=?1, P.email=?2 , P.password=?3, P.prenom=?4, P.nom=?5, P.type=?6, P.matricule=?7,P.cin=?8, id_dep=?9 where P.id=?10")
     @Modifying

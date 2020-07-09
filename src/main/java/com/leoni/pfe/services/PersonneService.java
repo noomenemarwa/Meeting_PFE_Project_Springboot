@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,19 @@ public class PersonneService {
     public List<Personne> findAllPersonne() {
         System.out.println("generated random password: " + generatePassword());
         return personneRepository.findAll();
+    }
+
+    List<Long> findIdDepByPersonneIds(List<Long> personneIds) {
+        List<Long> idDepList = new ArrayList<>(0);
+        List<Personne> personneList = personneRepository.findByIdIn(personneIds);
+        if (personneList != null && !personneList.isEmpty()) {
+            personneList.forEach(personne -> idDepList.add(personne.getIdDep()));
+        }
+        return idDepList;
+    }
+
+    List<Personne> findByPersonneIds(List<Long> personneIds) {
+        return personneRepository.findByIdIn(personneIds);
     }
 
     public Personne login(String email, String password) {

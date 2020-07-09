@@ -1,500 +1,99 @@
-2020-06-29 00:06:31.255  INFO 15884 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 15884 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
-2020-06-29 00:06:31.268  INFO 15884 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
-2020-06-29 00:06:32.212  INFO 15884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-06-29 00:06:32.337  INFO 15884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 112ms. Found 4 JPA repository interfaces.
-2020-06-29 00:06:33.996  INFO 15884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
-2020-06-29 00:06:34.012  INFO 15884 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-06-29 00:06:34.012  INFO 15884 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-06-29 00:06:34.204  INFO 15884 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-06-29 00:06:34.205  INFO 15884 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2830 ms
-2020-06-29 00:06:34.376  INFO 15884 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-06-29 00:06:35.312  INFO 15884 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-06-29 00:06:37.434  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 00:06:37.491  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : CREATE TABLE leonimeeting.DATABASECHANGELOGLOCK (ID INT NOT NULL, `LOCKED` BIT(1) NOT NULL, LOCKGRANTED datetime NULL, LOCKEDBY VARCHAR(255) NULL, CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID))
-2020-06-29 00:06:38.073  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 00:06:38.097  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : DELETE FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 00:06:38.099  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : INSERT INTO leonimeeting.DATABASECHANGELOGLOCK (ID, `LOCKED`) VALUES (1, 0)
-2020-06-29 00:06:38.409  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
-2020-06-29 00:06:38.715  INFO 15884 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
-2020-06-29 00:06:38.747  INFO 15884 --- [main] l.c.StandardChangeLogHistoryService      : Creating database history table with name: leonimeeting.DATABASECHANGELOG
-2020-06-29 00:06:38.750  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : CREATE TABLE leonimeeting.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED datetime NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35) NULL, `DESCRIPTION` VARCHAR(255) NULL, COMMENTS VARCHAR(255) NULL, TAG VARCHAR(255) NULL, LIQUIBASE VARCHAR(20) NULL, CONTEXTS VARCHAR(255) NULL, LABELS VARCHAR(255) NULL, DEPLOYMENT_ID VARCHAR(10) NULL)
-2020-06-29 00:06:39.316  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
-2020-06-29 00:06:39.321  INFO 15884 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
-2020-06-29 00:06:39.322  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
-2020-06-29 00:06:39.326  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 00:06:39.370  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists departement
-2020-06-29 00:06:39.393  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists membredereunion
-2020-06-29 00:06:39.418  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists personne
-2020-06-29 00:06:39.461  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists reunion
-2020-06-29 00:06:39.482  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists client
-2020-06-29 00:06:39.505  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists company
-2020-06-29 00:06:39.527  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table departement (id int not null auto_increment, nom varchar(254), primary key (id))
-2020-06-29 00:06:40.301  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table membredereunion (id int not null auto_increment, id_membre int not null, id_reunion int not null, is_present smallint default 0, primary key (id))
-2020-06-29 00:06:41.021  INFO 15884 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table reunion (id int not null auto_increment, sujet varchar(254),qrcode varchar(254), date_deb, date_fin datetime, primary key (id))
-2020-06-29 00:06:41.045 ERROR 15884 --- [main] liquibase.changelog.ChangeSet            : Change Set classpath:db/changelog/changelog.mysql.sql::2020-1::marwa-pfe failed.  Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', date_fin datetime, primary key (id))' at line 1 [Failed SQL: (1064) create table reunion (id int not null auto_increment, sujet varchar(254),qrcode varchar(254), date_deb, date_fin datetime, primary key (id))]
-2020-06-29 00:06:41.152  INFO 15884 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
-2020-06-29 00:06:41.156  WARN 15884 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.MigrationFailedException: Migration failed for change set classpath:db/changelog/changelog.mysql.sql::2020-1::marwa-pfe:
-     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', date_fin datetime, primary key (id))' at line 1 [Failed SQL: (1064) create table reunion (id int not null auto_increment, sujet varchar(254),qrcode varchar(254), date_deb, date_fin datetime, primary key (id))]
-2020-06-29 00:06:41.157  INFO 15884 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-06-29 00:06:41.179  INFO 15884 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2020-06-29 00:06:41.184  INFO 15884 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2020-06-29 00:06:41.204  INFO 15884 --- [main] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2020-06-29 00:06:41.227 ERROR 15884 --- [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.MigrationFailedException: Migration failed for change set classpath:db/changelog/changelog.mysql.sql::2020-1::marwa-pfe:
-     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', date_fin datetime, primary key (id))' at line 1 [Failed SQL: (1064) create table reunion (id int not null auto_increment, sujet varchar(254),qrcode varchar(254), date_deb, date_fin datetime, primary key (id))]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at com.leoni.pfe.PfeApplication.main(PfeApplication.java:12) [main/:na]
-Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set classpath:db/changelog/changelog.mysql.sql::2020-1::marwa-pfe:
-     Reason: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', date_fin datetime, primary key (id))' at line 1 [Failed SQL: (1064) create table reunion (id int not null auto_increment, sujet varchar(254),qrcode varchar(254), date_deb, date_fin datetime, primary key (id))]
-	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:646) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:53) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:83) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.Liquibase.update(Liquibase.java:202) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.Liquibase.update(Liquibase.java:179) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:366) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:314) ~[liquibase-core-3.8.4.jar:na]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792) ~[spring-beans-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	... 18 common frames omitted
-Caused by: liquibase.exception.DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', date_fin datetime, primary key (id))' at line 1 [Failed SQL: (1064) create table reunion (id int not null auto_increment, sujet varchar(254),qrcode varchar(254), date_deb, date_fin datetime, primary key (id))]
-	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:402) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:59) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:131) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1276) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1258) ~[liquibase-core-3.8.4.jar:na]
-	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:609) ~[liquibase-core-3.8.4.jar:na]
-	... 26 common frames omitted
-Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', date_fin datetime, primary key (id))' at line 1
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.4.2.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.4.2.jar:na]
-	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:398) ~[liquibase-core-3.8.4.jar:na]
-	... 31 common frames omitted
-
-2020-06-29 00:09:41.363  INFO 18604 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 18604 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
-2020-06-29 00:09:41.371  INFO 18604 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
-2020-06-29 00:09:42.836  INFO 18604 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-06-29 00:09:42.962  INFO 18604 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109ms. Found 4 JPA repository interfaces.
-2020-06-29 00:09:45.241  INFO 18604 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
-2020-06-29 00:09:45.262  INFO 18604 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-06-29 00:09:45.263  INFO 18604 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-06-29 00:09:45.458  INFO 18604 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-06-29 00:09:45.459  INFO 18604 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3918 ms
-2020-06-29 00:09:45.645  INFO 18604 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-06-29 00:09:46.531  INFO 18604 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-06-29 00:09:48.376  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 00:09:48.385  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 00:09:48.392  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
-2020-06-29 00:09:48.494  INFO 18604 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
-2020-06-29 00:09:48.612  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
-2020-06-29 00:09:48.614  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
-2020-06-29 00:09:48.616  INFO 18604 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
-2020-06-29 00:09:48.616  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
-2020-06-29 00:09:48.660  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists departement
-2020-06-29 00:09:48.939  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists membredereunion
-2020-06-29 00:09:49.271  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists personne
-2020-06-29 00:09:49.295  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists reunion
-2020-06-29 00:09:49.364  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists client
-2020-06-29 00:09:49.442  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : drop table if exists company
-2020-06-29 00:09:49.654  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table departement (id int not null auto_increment, nom varchar(254), primary key (id))
-2020-06-29 00:09:50.257  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table membredereunion (id int not null auto_increment, id_membre int not null, id_reunion int not null, is_present smallint default 0, primary key (id))
-2020-06-29 00:09:50.786  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table reunion (id int not null auto_increment, sujet varchar(254), qrcode varchar(254), date_deb datetime, date_fin datetime, primary key (id))
-2020-06-29 00:09:51.354  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table personne (id int not null auto_increment, id_dep int, matricule varchar(255) unique, prenom varchar(254), nom varchar(254), fonction varchar(254), type varchar(100), email varchar(100) unique, password varchar(254), cin varchar(254), primary key (id))
-2020-06-29 00:09:52.050  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table company (id int not null auto_increment, nom varchar(254), primary key (id))
-2020-06-29 00:09:52.711  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : create table client (id int not null auto_increment, id_comp int, prenom varchar(254), nom varchar(254), fonction varchar(254), email varchar(100) unique, password varchar(254), primary key (id))
-2020-06-29 00:09:53.284  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : alter table personne add constraint FK_association1 foreign key (id_dep) references departement (id) on delete cascade on update cascade
-2020-06-29 00:09:55.422  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : alter table membredereunion add constraint FK_Generalisation_3 foreign key (id_membre) references personne (id) on delete cascade on update cascade
-2020-06-29 00:09:56.678  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : alter table membredereunion add constraint FK_Generalisation_4 foreign key (id_reunion) references reunion (id) on delete cascade on update cascade
-2020-06-29 00:09:58.744  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : alter table client add constraint FK_association5 foreign key (id_comp) references company (id) on delete cascade on update cascade
-2020-06-29 00:10:01.399  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : insert into departement (nom) values ('IT'), ('TestDepart'), ('test2'),('test3')
-2020-06-29 00:10:01.405  INFO 18604 --- [main] liquibase.changelog.ChangeSet            : Custom SQL executed
-2020-06-29 00:10:01.542  INFO 18604 --- [main] liquibase.changelog.ChangeSet            : ChangeSet classpath:db/changelog/changelog.mysql.sql::2020-1::marwa-pfe ran successfully in 12916ms
-2020-06-29 00:10:01.544  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MAX(ORDEREXECUTED) FROM leonimeeting.DATABASECHANGELOG
-2020-06-29 00:10:03.896  INFO 18604 --- [main] liquibase.executor.jvm.JdbcExecutor      : INSERT INTO leonimeeting.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, `DESCRIPTION`, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('2020-1', 'marwa-pfe', 'classpath:db/changelog/changelog.mysql.sql', NOW(), 1, '8:68bb4acac167300b008119cc6e8fdb94', 'sql', '', 'EXECUTED', NULL, NULL, '3.8.4', '3385788618')
-2020-06-29 00:10:04.228  INFO 18604 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
-2020-06-29 00:10:06.036  INFO 18604 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-06-29 00:10:07.187  INFO 18604 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
-2020-06-29 00:10:08.041  INFO 18604 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-06-29 00:10:08.482  INFO 18604 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2020-06-29 00:10:10.408  INFO 18604 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-06-29 00:10:10.419  INFO 18604 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-06-29 00:10:12.126  WARN 18604 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-06-29 00:10:13.555  INFO 18604 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@678e40, org.springframework.security.web.context.SecurityContextPersistenceFilter@50d33c, org.springframework.security.web.header.HeaderWriterFilter@961e55, org.springframework.web.filter.CorsFilter@2dc36c, org.springframework.security.web.authentication.logout.LogoutFilter@1c4b8d6, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@196a895, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a3d7c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1629063, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45ddf2, org.springframework.security.web.session.SessionManagementFilter@66fe3e, org.springframework.security.web.access.ExceptionTranslationFilter@1922937, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12e972d]
-2020-06-29 00:10:14.207  INFO 18604 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
-2020-06-29 00:10:14.210  INFO 18604 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 34.108 seconds (JVM running for 34.791)
-2020-06-29 00:12:26.341  INFO 18604 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-06-29 00:12:26.341  INFO 18604 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-06-29 00:12:26.358  INFO 18604 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
-2020-06-29 00:13:52.511  WARN 18604 --- [http-nio-8082-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1452, SQLState: 23000
-2020-06-29 00:13:52.511 ERROR 18604 --- [http-nio-8082-exec-6] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot add or update a child row: a foreign key constraint fails (`leonimeeting`.`personne`, CONSTRAINT `FK_association1` FOREIGN KEY (`id_dep`) REFERENCES `departement` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-2020-06-29 00:13:52.650 ERROR 18604 --- [http-nio-8082-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
-
-java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`leonimeeting`.`personne`, CONSTRAINT `FK_association1` FOREIGN KEY (`id_dep`) REFERENCES `departement` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-3.4.2.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.2.jar:na]
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:57) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:43) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3133) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3737) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:84) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:330) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:287) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:193) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:123) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:185) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:128) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:102) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:710) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:696) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:368) ~[spring-orm-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.sun.proxy.$Proxy99.persist(Unknown Source) ~[na:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:314) ~[spring-orm-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.sun.proxy.$Proxy99.persist(Unknown Source) ~[na:na]
-	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:554) ~[spring-data-jpa-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:371) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:204) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:657) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:621) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:178) ~[spring-data-jpa-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.sun.proxy.$Proxy114.save(Unknown Source) ~[na:na]
-	at com.leoni.pfe.services.PersonneService.savePersonne(PersonneService.java:65) ~[main/:na]
-	at com.leoni.pfe.services.PersonneService$$FastClassBySpringCGLIB$$f5b8a182.invoke(<generated>) ~[main/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:685) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.leoni.pfe.services.PersonneService$$EnhancerBySpringCGLIB$$dd8ae7e6.savePersonne(<generated>) ~[main/:na]
-	at com.leoni.pfe.rest.PersonneController.savePersonne(PersonneController.java:103) ~[main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:204) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
-
-2020-06-29 00:14:53.813  WARN 18604 --- [http-nio-8082-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1452, SQLState: 23000
-2020-06-29 00:14:53.813 ERROR 18604 --- [http-nio-8082-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Cannot add or update a child row: a foreign key constraint fails (`leonimeeting`.`membredereunion`, CONSTRAINT `FK_Generalisation_3` FOREIGN KEY (`id_membre`) REFERENCES `personne` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-2020-06-29 00:14:53.870 ERROR 18604 --- [http-nio-8082-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
-
-java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`leonimeeting`.`membredereunion`, CONSTRAINT `FK_Generalisation_3` FOREIGN KEY (`id_membre`) REFERENCES `personne` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025) ~[mysql-connector-java-8.0.19.jar:8.0.19]
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-3.4.2.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.2.jar:na]
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.dialect.identity.GetGeneratedKeysDelegate.executeAndExtract(GetGeneratedKeysDelegate.java:57) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:43) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3133) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3737) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:84) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:330) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:287) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:193) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:123) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:185) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:128) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:102) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:710) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:696) ~[hibernate-core-5.4.12.Final.jar:5.4.12.Final]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:368) ~[spring-orm-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.sun.proxy.$Proxy99.persist(Unknown Source) ~[na:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:314) ~[spring-orm-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.sun.proxy.$Proxy99.persist(Unknown Source) ~[na:na]
-	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:554) ~[spring-data-jpa-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:371) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:204) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:657) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.doInvoke(RepositoryFactorySupport.java:621) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.invoke(RepositoryFactorySupport.java:605) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:80) ~[spring-data-commons-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:366) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:99) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:178) ~[spring-data-jpa-2.2.5.RELEASE.jar:2.2.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.sun.proxy.$Proxy112.save(Unknown Source) ~[na:na]
-	at com.leoni.pfe.services.MembreDeReunionService.saveMembre(MembreDeReunionService.java:54) ~[main/:na]
-	at com.leoni.pfe.services.MembreDeReunionService$$FastClassBySpringCGLIB$$be4a5361.invoke(<generated>) ~[main/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:685) ~[spring-aop-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at com.leoni.pfe.services.MembreDeReunionService$$EnhancerBySpringCGLIB$$37d2a0e3.saveMembre(<generated>) ~[main/:na]
-	at com.leoni.pfe.rest.MembreDeReunionController.saveMembre(MembreDeReunionController.java:69) ~[main/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:126) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:90) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:118) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:158) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:204) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.2.2.RELEASE.jar:5.2.2.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.4.RELEASE.jar:5.2.4.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1639) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.31.jar:9.0.31]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
-
-2020-06-29 12:14:40.050  INFO 6244 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 6244 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
-2020-06-29 12:14:40.050  INFO 6244 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
-2020-06-29 12:14:40.907  INFO 6244 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-06-29 12:14:41.013  INFO 6244 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90ms. Found 4 JPA repository interfaces.
-2020-06-29 12:14:42.447  INFO 6244 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
-2020-06-29 12:14:42.462  INFO 6244 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-06-29 12:14:42.462  INFO 6244 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
-2020-06-29 12:14:43.219  INFO 6244 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-06-29 12:14:43.220  INFO 6244 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3075 ms
-2020-06-29 12:14:43.373  INFO 6244 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-06-29 12:14:45.273  INFO 6244 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-06-29 12:14:47.482  INFO 6244 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 12:14:47.773  INFO 6244 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
-2020-06-29 12:14:47.777  INFO 6244 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
-2020-06-29 12:14:48.225  INFO 6244 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
-2020-06-29 12:14:49.369  INFO 6244 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
-2020-06-29 12:14:49.384  INFO 6244 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
-2020-06-29 12:14:49.386  INFO 6244 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
-2020-06-29 12:14:49.387  INFO 6244 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
-2020-06-29 12:14:49.540  INFO 6244 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
-2020-06-29 12:14:50.155  INFO 6244 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-06-29 12:14:50.838  INFO 6244 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
-2020-06-29 12:14:51.340  INFO 6244 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-06-29 12:14:51.730  INFO 6244 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2020-06-29 12:14:53.746  INFO 6244 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-06-29 12:14:53.771  INFO 6244 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-06-29 12:14:55.710  WARN 6244 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-06-29 12:14:57.049  INFO 6244 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@19b851c, org.springframework.security.web.context.SecurityContextPersistenceFilter@56925b, org.springframework.security.web.header.HeaderWriterFilter@167296, org.springframework.web.filter.CorsFilter@8ab98f, org.springframework.security.web.authentication.logout.LogoutFilter@1921410, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@111d7b9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7421cc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9f5552, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1529bc0, org.springframework.security.web.session.SessionManagementFilter@17f81a0, org.springframework.security.web.access.ExceptionTranslationFilter@fa0b1a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@11f36e5]
-2020-06-29 12:14:58.044  INFO 6244 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
-2020-06-29 12:14:58.050  INFO 6244 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 18.963 seconds (JVM running for 20.192)
-2020-06-29 12:15:22.524  INFO 6244 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-06-29 12:15:22.525  INFO 6244 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-06-29 12:15:22.560  INFO 6244 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 35 ms
+2020-07-10 00:03:07.816  INFO 10116 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 10116 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
+2020-07-10 00:03:07.828  INFO 10116 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
+2020-07-10 00:03:08.844  INFO 10116 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-07-10 00:03:09.052  INFO 10116 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 184ms. Found 4 JPA repository interfaces.
+2020-07-10 00:03:10.861  INFO 10116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2020-07-10 00:03:10.904  INFO 10116 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-10 00:03:10.904  INFO 10116 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-07-10 00:03:11.109  INFO 10116 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-10 00:03:11.110  INFO 10116 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3111 ms
+2020-07-10 00:03:11.278  INFO 10116 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-10 00:03:12.133  INFO 10116 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-10 00:03:13.904  INFO 10116 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-07-10 00:03:13.914  INFO 10116 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-07-10 00:03:13.918  INFO 10116 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
+2020-07-10 00:03:13.992  INFO 10116 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
+2020-07-10 00:03:14.145  INFO 10116 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
+2020-07-10 00:03:14.149  INFO 10116 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
+2020-07-10 00:03:14.156  INFO 10116 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
+2020-07-10 00:03:14.156  INFO 10116 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+2020-07-10 00:03:14.225  INFO 10116 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
+2020-07-10 00:03:14.424  INFO 10116 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-07-10 00:03:14.571  INFO 10116 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-07-10 00:03:14.951  INFO 10116 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-07-10 00:03:15.308  INFO 10116 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-10 00:03:16.361  INFO 10116 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-07-10 00:03:16.372  INFO 10116 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-10 00:03:17.343  WARN 10116 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-07-10 00:03:18.030  INFO 10116 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1689ee2, org.springframework.security.web.context.SecurityContextPersistenceFilter@1666366, org.springframework.security.web.header.HeaderWriterFilter@1ac5723, org.springframework.web.filter.CorsFilter@12b4303, org.springframework.security.web.authentication.logout.LogoutFilter@7ac98b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5b4594, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1be852a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9188b4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1dda7a3, org.springframework.security.web.session.SessionManagementFilter@c4f31d, org.springframework.security.web.access.ExceptionTranslationFilter@14bb6ae, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1084a6d]
+2020-07-10 00:03:18.414  INFO 10116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2020-07-10 00:03:18.417  INFO 10116 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 11.527 seconds (JVM running for 12.257)
+2020-07-10 00:03:30.387  INFO 10116 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-10 00:03:30.388  INFO 10116 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-10 00:03:30.410  INFO 10116 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2020-07-10 00:08:05.499  INFO 8464 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 8464 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
+2020-07-10 00:08:05.503  INFO 8464 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
+2020-07-10 00:08:06.424  INFO 8464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-07-10 00:08:06.530  INFO 8464 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90ms. Found 4 JPA repository interfaces.
+2020-07-10 00:08:08.006  INFO 8464 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2020-07-10 00:08:08.024  INFO 8464 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-10 00:08:08.025  INFO 8464 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-07-10 00:08:08.227  INFO 8464 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-10 00:08:08.228  INFO 8464 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2622 ms
+2020-07-10 00:08:08.399  INFO 8464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-10 00:08:09.411  INFO 8464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-10 00:08:11.583  INFO 8464 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-07-10 00:08:11.593  INFO 8464 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-07-10 00:08:11.597  INFO 8464 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
+2020-07-10 00:08:11.690  INFO 8464 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
+2020-07-10 00:08:11.831  INFO 8464 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
+2020-07-10 00:08:11.832  INFO 8464 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
+2020-07-10 00:08:11.835  INFO 8464 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
+2020-07-10 00:08:11.836  INFO 8464 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+2020-07-10 00:08:11.911  INFO 8464 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
+2020-07-10 00:08:12.055  INFO 8464 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-07-10 00:08:12.202  INFO 8464 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-07-10 00:08:12.386  INFO 8464 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-07-10 00:08:12.549  INFO 8464 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-10 00:08:13.448  INFO 8464 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-07-10 00:08:13.459  INFO 8464 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-10 00:08:14.465  WARN 8464 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-07-10 00:08:15.158  INFO 8464 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@224125, org.springframework.security.web.context.SecurityContextPersistenceFilter@12594f4, org.springframework.security.web.header.HeaderWriterFilter@16206f8, org.springframework.web.filter.CorsFilter@13560, org.springframework.security.web.authentication.logout.LogoutFilter@dce412, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2c10e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16a6d46, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@172c967, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1eab3ae, org.springframework.security.web.session.SessionManagementFilter@1599b18, org.springframework.security.web.access.ExceptionTranslationFilter@2ae7d7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@b03908]
+2020-07-10 00:08:15.749  INFO 8464 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2020-07-10 00:08:15.757  INFO 8464 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 11.156 seconds (JVM running for 12.115)
+2020-07-10 00:08:20.350  INFO 8464 --- [http-nio-8082-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-10 00:08:20.351  INFO 8464 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-10 00:08:20.365  INFO 8464 --- [http-nio-8082-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-07-10 00:11:32.253  INFO 2104 --- [main] com.leoni.pfe.PfeApplication             : Starting PfeApplication on DESKTOP-28T11M1 with PID 2104 (D:\pfe_marwa\build\classes\java\main started by admin in D:\pfe_marwa)
+2020-07-10 00:11:32.257  INFO 2104 --- [main] com.leoni.pfe.PfeApplication             : No active profile set, falling back to default profiles: default
+2020-07-10 00:11:33.110  INFO 2104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-07-10 00:11:33.357  INFO 2104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 229ms. Found 4 JPA repository interfaces.
+2020-07-10 00:11:35.300  INFO 2104 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2020-07-10 00:11:35.315  INFO 2104 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-07-10 00:11:35.316  INFO 2104 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-07-10 00:11:35.512  INFO 2104 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-07-10 00:11:35.513  INFO 2104 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3170 ms
+2020-07-10 00:11:35.682  INFO 2104 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-10 00:11:36.534  INFO 2104 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-10 00:11:38.285  INFO 2104 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-07-10 00:11:38.294  INFO 2104 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOGLOCK
+2020-07-10 00:11:38.298  INFO 2104 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT `LOCKED` FROM leonimeeting.DATABASECHANGELOGLOCK WHERE ID=1
+2020-07-10 00:11:38.425  INFO 2104 --- [main] l.lockservice.StandardLockService        : Successfully acquired change log lock
+2020-07-10 00:11:38.553  INFO 2104 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT MD5SUM FROM leonimeeting.DATABASECHANGELOG WHERE MD5SUM IS NOT NULL LIMIT 1
+2020-07-10 00:11:38.555  INFO 2104 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT COUNT(*) FROM leonimeeting.DATABASECHANGELOG
+2020-07-10 00:11:38.557  INFO 2104 --- [main] l.c.StandardChangeLogHistoryService      : Reading from leonimeeting.DATABASECHANGELOG
+2020-07-10 00:11:38.559  INFO 2104 --- [main] liquibase.executor.jvm.JdbcExecutor      : SELECT * FROM leonimeeting.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+2020-07-10 00:11:38.731  INFO 2104 --- [main] l.lockservice.StandardLockService        : Successfully released change log lock
+2020-07-10 00:11:38.937  INFO 2104 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-07-10 00:11:39.053  INFO 2104 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-07-10 00:11:39.384  INFO 2104 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-07-10 00:11:39.703  INFO 2104 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2020-07-10 00:11:40.811  INFO 2104 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-07-10 00:11:40.822  INFO 2104 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-10 00:11:41.796  WARN 2104 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-07-10 00:11:42.477  INFO 2104 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f5f119, org.springframework.security.web.context.SecurityContextPersistenceFilter@99c874, org.springframework.security.web.header.HeaderWriterFilter@57d723, org.springframework.web.filter.CorsFilter@1dbb7bb, org.springframework.security.web.authentication.logout.LogoutFilter@afb4e7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1126f07, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9cf53c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12a7ca0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77a496, org.springframework.security.web.session.SessionManagementFilter@2fd4e9, org.springframework.security.web.access.ExceptionTranslationFilter@1b3294c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2d971f]
+2020-07-10 00:11:42.861  INFO 2104 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2020-07-10 00:11:42.864  INFO 2104 --- [main] com.leoni.pfe.PfeApplication             : Started PfeApplication in 11.489 seconds (JVM running for 12.169)
+2020-07-10 00:11:55.509  INFO 2104 --- [http-nio-8082-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-07-10 00:11:55.510  INFO 2104 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-07-10 00:11:55.521  INFO 2104 --- [http-nio-8082-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
